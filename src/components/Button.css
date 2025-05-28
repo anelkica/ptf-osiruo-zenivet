@@ -1,0 +1,20 @@
+.btn {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+
+    min-width: 5rem;
+    padding: 0.6rem 2.2rem;
+    border-radius: 6px;
+    border:none;
+
+    color: var(--background);
+    background-color: var(--primary);
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+}
