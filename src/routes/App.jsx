@@ -75,7 +75,7 @@ function App() {
       />
       <Bookings list_of_bookings={current_booking_times} />
 
-      <div style={{ height: '40px' }}></div>
+      <div style={{ height: '5rem' }}></div>
       <Footer />
     </>
   );
