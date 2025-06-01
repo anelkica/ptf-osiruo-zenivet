@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
+import Header from "../components/Header";
+
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 
@@ -56,6 +58,8 @@ function App() {
 
   return (
     <>
+      <Header />
+
       <h1>Zenivet</h1>
       <Calendar
         onChange={on_change}
