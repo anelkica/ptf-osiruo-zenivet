@@ -1,0 +1,25 @@
+# Node modules (instaliraju se unutar kontejnera)
+node_modules
+*.log
+
+# OS fajlovi i privremene stvari
+.DS_Store
+Thumbs.db
+
+# Git repozitorijum
+.git
+.gitignore
+
+# IDE konfiguracije
+.vscode
+.idea
+
+# Build output (ako koristiš Docker da praviš build iznutra)
+dist
+
+# ENV fajlovi – samo ako ne želiš da ih Docker vidi (opciono)
+.env
+.env.* 
+
+# Lokalne konfiguracije
+*.local
