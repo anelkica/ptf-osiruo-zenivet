@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Definiši port koji kontejner izlaže
-EXPOSE 3000
+EXPOSE 5173
 
 # Pokreni aplikaciju
 CMD ["node", "index.js"]
