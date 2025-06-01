@@ -1,7 +1,6 @@
 import { booking_times } from "../utils/random_datetime";
 import "./Bookings.css";
 
-
 function Bookings({list_of_bookings = []}) {
   const middle = Math.ceil(list_of_bookings.length / 2);
 
@@ -14,12 +13,12 @@ function Bookings({list_of_bookings = []}) {
   return (
     <table className="bookings">
       <thead>
-        <tr><th colspan={"2"}>Termini</th></tr>
+        <tr><th colSpan={"2"}>Termini</th></tr>
       </thead>
       <tbody>
           {list_of_bookings.map(
             (booking, i) => (
-              <tr className="booking-col"><td key={`row-${i}`}>{booking}</td></tr>
+              <tr key={`row-${i}`} className="booking-col"><td>{booking}</td></tr>
             )
           )}
       </tbody>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
@@ -8,15 +8,30 @@ import Bookings from "../components/Bookings";
 import { get_random_date, to_iso_date_string, generate_booking_date_with_times } from "../utils/random_datetime";
 
 function App() {
+  const [calendar_value, set_calendar_value] = useState(new Date());
+
+  const [unavailable_dates, set_unavailable_dates] = useState([]);
+  const [current_booking_times, set_current_booking_times] = useState([]);
+  const generated_dates_with_times = useRef({});
+
   const today = new Date();
   const end_of_next_month = new Date(today.getFullYear(), today.getMonth() + 3, 0);
-  let unavailable_dates = [];
 
-  for (let i = 0; i < 12; i++) {
-    let random_date = get_random_date(today, end_of_next_month);
+  // initializing values
+  useEffect(() => {
+    let random_dates = [];
 
-    unavailable_dates.push(random_date);
-  };
+    for (let i = 0; i < 12; i++) {
+      let random_date = get_random_date(today, end_of_next_month);
+
+      random_dates.push(random_date);
+    };
+
+    let booking = generate_booking_date_with_times(today, end_of_next_month, unavailable_dates, 5);
+
+    set_current_booking_times(booking.booking_times);
+    set_unavailable_dates(random_dates);
+  }, []);
 
   // calendar tileDisabled handler
   // returns true if the date should be disabled, false if it should be enabled
@@ -27,13 +42,26 @@ function App() {
     return is_unavailable_date || is_sunday;
   }
 
-  let booking = generate_booking_date_with_times(today, end_of_next_month, unavailable_dates, 5);
+  function on_change(next_value) {
+    if (calendar_value === next_value) return;
+    
+    let booking = generate_booking_date_with_times(next_value, next_value, unavailable_dates, 5);
 
+    if (!generated_dates_with_times[booking.date])
+      generated_dates_with_times[booking.date] = booking.booking_times;
+
+    console.log(generated_dates_with_times);
+    set_current_booking_times(generated_dates_with_times[booking.date]);
+    set_calendar_value(next_value);
+  }
 
   return (
     <>
-      <h1>Main Application</h1>
-      <Calendar 
+      <h1>Zenivet</h1>
+      <Calendar
+        onChange={on_change}
+        value={calendar_value}
+
         minDate={today}
         maxDate={end_of_next_month}
 
@@ -42,7 +70,7 @@ function App() {
 
         tileDisabled={check_if_date_is_disabled}
       />
-      <Bookings list_of_bookings={booking.booking_times} />
+      <Bookings list_of_bookings={current_booking_times} />
     </>
   );
 }
