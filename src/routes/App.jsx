@@ -5,6 +5,8 @@ import 'react-calendar/dist/Calendar.css';
 
 import Bookings from "../components/Bookings";
 
+import Footer from "../components/Footer";
+
 import { get_random_date, to_iso_date_string, generate_booking_date_with_times } from "../utils/random_datetime";
 
 function App() {
@@ -68,6 +70,9 @@ function App() {
         tileDisabled={check_if_date_is_disabled}
       />
       <Bookings list_of_bookings={current_booking_times} />
+
+      <div style={{ height: '40px' }}></div>
+      <Footer />
     </>
   );
 }
