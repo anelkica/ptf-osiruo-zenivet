@@ -1,0 +1,22 @@
+.bookings {
+    margin-top: 1.25rem;
+    font-family: "Inter", sans-serif;
+
+    border: 1px solid var(--primary);
+    border-collapse: collapse;;
+    font-size: 1.12rem;
+
+    width: 100%;
+    text-align: center;;
+}
+
+.bookings th {
+    color: var(--tertiary);
+    background-color: var(--primary);
+
+    padding: 0.15rem;
+}
+
+.booking-col:nth-child(2n) {
+    background-color: var(--tertiary);
+}
