@@ -1,4 +1,3 @@
-// Footer.jsx
 import './Footer.css';
 
 function Footer() {
