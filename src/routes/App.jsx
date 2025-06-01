@@ -27,9 +27,6 @@ function App() {
       random_dates.push(random_date);
     };
 
-    let booking = generate_booking_date_with_times(today, end_of_next_month, unavailable_dates, 5);
-
-    set_current_booking_times(booking.booking_times);
     set_unavailable_dates(random_dates);
   }, []);
 
