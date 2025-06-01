@@ -56,6 +56,7 @@ function App() {
     set_calendar_value(next_value);
   }
 
+  // DODATI <Footer /> KAD VIDIMO DA JE SVE OKIDOKI
   return (
     <>
       <Header />
@@ -76,7 +77,6 @@ function App() {
       <Bookings list_of_bookings={current_booking_times} />
 
       <div style={{ height: '5rem' }}></div>
-      <Footer />
     </>
   );
 }
